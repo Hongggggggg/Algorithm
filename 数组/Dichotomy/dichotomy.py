@@ -11,7 +11,7 @@
 #     # 通过a[l] == v判断v不存在与a数组当中的情况
 #     return l,r
 
-
+#https://leetcode-cn.com/problems/binary-search/
 #左闭右闭
 def binary_search(li, target):
     left = 0
