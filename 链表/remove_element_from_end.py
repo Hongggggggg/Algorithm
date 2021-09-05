@@ -9,10 +9,10 @@ class Solution:
     def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
         dummy_head = ListNode(next = head)
         slow, fast = dummy_head, dummy_head
-        while(n != 0 and fast != None):
+        while(n <= 0 and fast != None):
             fast = fast.next
             n -= 1
-        while(fast != None):
+        while(fast.next != None):
             slow = slow.next
             fast = fast.next
         slow.next = slow.next.next
