@@ -1,48 +1,49 @@
-# #前序遍历(中左右)
-# class Solution:
-#     def preorderTraversal(self, root):
-#         result = []
+#递归法
+#前序遍历(中左右)
+class Solution:
+    def preorderTraversal(self, root):
+        result = []
 
-#         def traversal(root):
-#             if root == None:
-#                 return
-#             result.append(root.val) #中
-#             traversal(root.left) #左
-#             traversal(root.right) #右
+        def traversal(root):
+            if root == None:
+                return
+            result.append(root.val) #中
+            traversal(root.left) #左
+            traversal(root.right) #右
         
-#         traversal(root)
-#         return result
+        traversal(root)
+        return result
 
-# #中序遍历(左中右)
-# class Solution:
-#     def preorderTraversal(self, root):
-#         result = []
+#中序遍历(左中右)
+class Solution:
+    def preorderTraversal(self, root):
+        result = []
 
-#         def traversal(root):
-#             if root == None:
-#                 return
-#             traversal(root.left) #左
-#             result.append(root.val) #中
-#             traversal(root.right) #右
+        def traversal(root):
+            if root == None:
+                return
+            traversal(root.left) #左
+            result.append(root.val) #中
+            traversal(root.right) #右
         
-#         traversal(root)
-#         return result
+        traversal(root)
+        return result
 
 
-# #后序遍历(左右中)
-# class Solution:
-#     def preorderTraversal(self, root):
-#         result = []
+#后序遍历(左右中)
+class Solution:
+    def preorderTraversal(self, root):
+        result = []
 
-#         def traversal(root):
-#             if root == None:
-#                 return
-#             traversal(root.left) #左
-#             traversal(root.right) #右
-#             result.append(root.val) #中
+        def traversal(root):
+            if root == None:
+                return
+            traversal(root.left) #左
+            traversal(root.right) #右
+            result.append(root.val) #中
 
-#         traversal(root)
-#         return result
+        traversal(root)
+        return result
 
 #迭代法
 #前序遍历
@@ -109,3 +110,71 @@ class Solution:
         #将最终的数组反转
         return result[::-1]
 
+
+#统一迭代法
+#前序
+class Solution:
+    def preorderTraversal(self, root):
+        result = []
+        st = []
+        if root:
+            st.append(root)
+        while st:
+            node = st.pop()
+            if node != None:
+                if node.right:
+                    st.append(node.right)#右
+                if node.left:
+                    st.append(node.left)#左
+                st.append(node)#中
+                st.append(None)
+            else:
+                node = st.pop()
+                result.append(node.val)
+        return result
+
+
+#中序
+class Solution:
+    def preorderTraversal(self, root):
+        result = []
+        st = []
+        if root:
+            st.append(root)
+        while st:
+            node = st.pop()
+            if node != None:
+                if node.right:
+                    st.append(node.right)#右
+
+                st.append(node)#中
+                st.append(None)#中节点访问过，但是还没有处理，加入空节点做为标记。
+
+                if node.left:
+                    st.append(node.left)#左
+            else:
+                node = st.pop()
+                result.append(node.val)
+        return result
+
+
+#后序
+class Solution:
+    def preorderTraversal(self, root):
+        result = []
+        st = []
+        if root:
+            st.append(root)
+        while st:
+            node = st.pop()
+            if node != None:
+                st.append(node)#中
+                st.append(None)
+                if node.right:
+                    st.append(node.right)#右
+                if node.left:
+                    st.append(node.left)#左
+            else:
+                node = st.pop()
+                result.append(node.val)
+        return result
