@@ -9,7 +9,7 @@ class TreeNode:
 
 
 class Solution:
-    def binaryTreePaths(self, root: TreeNode) -> List[str]:
+    def binaryTreePaths(self, root: TreeNode):
         path = ''
         result = []
         if not root:
@@ -17,7 +17,7 @@ class Solution:
         self.traversal(root, path, result)
         return result
 
-    def traversal(self, cur: TreeNode, path: str, result: List[str]) -> None:
+    def traversal(self, cur: TreeNode, path: str, result) -> None:
         path += str(cur.val)
         #若当前节点为叶子节点，直接输出
         if not cur.left and not cur.right:
@@ -29,4 +29,12 @@ class Solution:
 
         if cur.right:
             self.traversal(cur.right, path + '->', result)
-            
+
+
+root_left = TreeNode(2)
+root_right = TreeNode(3)
+root = TreeNode(1, root_left, root_right)
+
+
+a = Solution()
+print(a.binaryTreePaths(root))
