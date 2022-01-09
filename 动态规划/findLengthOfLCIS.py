@@ -1,3 +1,4 @@
+#https://leetcode-cn.com/problems/longest-continuous-increasing-subsequence/
 from typing import List
 
 class Solution:
