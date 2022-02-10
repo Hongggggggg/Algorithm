@@ -10,11 +10,10 @@ class Solution:
         dummy_head = ListNode(next = head)
         cur = dummy_head
         while cur.next and cur.next.next:
-            tmp1 = cur.next
-            tmp2 = cur.next.next.next
-            cur.next = cur.next.next
-            cur.next.next = tmp1
-            cur.next.next.next = tmp2
-            cur = cur.next.next
+            tmp = cur.next.next
+            cur.next.next = tmp.next
+            tmp.next = cur.next
+            cur.next = tmp
+            cur = tmp.next
         return dummy_head.next
             
