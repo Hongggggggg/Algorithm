@@ -1,7 +1,3 @@
-from operator import truediv
-from xml.dom.pulldom import ErrorHandler
-
-
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
@@ -17,4 +13,4 @@ class Solution:
             if(slow == fast):
                 return True
         return False
-        
+           
